@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400.492" height="799.237" viewBox="0 0 1400.492 799.237">
+  <g id="Group_499" data-name="Group 499" transform="translate(13907.996 627.868)">
+    <rect id="Rectangle_387" data-name="Rectangle 387" width="1399" height="798" transform="translate(-13907 -627)" fill="#e7e7e7"/>
+    <g id="Group_498" data-name="Group 498">
+      <path id="Image_Big" data-name="Image Big" d="M1771.892-512a7.9,7.9,0,0,0-7.892,7.892v52.985a7.9,7.9,0,0,0,7.892,7.892h74.218a7.9,7.9,0,0,0,7.89-7.892v-52.985a7.9,7.9,0,0,0-7.89-7.892Zm74.029,63.319h-7.2l-13.247-12.448,9.924-8.219,13.154,10.59v7.448A2.572,2.572,0,0,1,1845.921-448.681Zm-14.384,0H1771.7a2.572,2.572,0,0,1-2.63-2.63v-11.576l23.862-22.056,38.6,36.261Zm-9.78-15.941-28.822-27.086L1769.073-469.6v-34.7a2.573,2.573,0,0,1,2.63-2.631h74.217a2.573,2.573,0,0,1,2.63,2.631v39.307L1835.4-475.738l-13.639,11.115Zm.49-36.669a10.473,10.473,0,0,0-10.334,10.334,10.347,10.347,0,0,0,10.334,10.336,10.473,10.473,0,0,0,10.333-10.336A10.472,10.472,0,0,0,1822.248-501.291Zm0,15.6a5.456,5.456,0,0,1-5.45-5.45,5.455,5.455,0,0,1,5.45-5.448,5.454,5.454,0,0,1,5.448,5.448A5.455,5.455,0,0,1,1822.248-485.694Z" transform="translate(-15017 249)" fill="#5e7fb1" opacity="0.31"/>
+      <g id="Group_497" data-name="Group 497" transform="translate(-13908 -627)" opacity="0.1">
+        <line id="Line_2" data-name="Line 2" x1="613" y2="350" transform="translate(0.5 447.5)" fill="none" stroke="#5191bc" stroke-width="2"/>
+        <line id="Line_3" data-name="Line 3" x1="613" y2="350" transform="translate(787)" fill="none" stroke="#5191bc" stroke-width="2"/>
+        <line id="Line_4" data-name="Line 4" x2="613" y2="350" transform="translate(787 447.5)" fill="none" stroke="#5191bc" stroke-width="2"/>
+        <line id="Line_5" data-name="Line 5" x2="613" y2="350" transform="translate(0.5)" fill="none" stroke="#5191bc" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg>

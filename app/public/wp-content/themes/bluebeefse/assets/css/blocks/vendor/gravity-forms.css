@@ -1,0 +1,17 @@
+/* Remove required legend */
+.gform_required_legend{
+    display: none;
+}
+
+/* Adjust Gravity Form's "Orbital" styles */
+.gform-theme--foundation {
+    --gf-form-gap-y: 15px;
+}
+
+/* Adjust inline submit button position */
+.gfield--type-submit{
+    &[data-field-position="inline"]{
+        display: grid;
+        place-items: end;
+    }
+}

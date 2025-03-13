@@ -1,0 +1,6 @@
+/* Adjust Categories List Styles */
+.wp-block-site-logo {
+    img{
+        width: 100%;
+    }
+}

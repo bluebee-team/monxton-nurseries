@@ -1,0 +1,26 @@
+.gform_wrapper{
+    .gform-body{
+        input[type="checkbox"]{
+            block-size: 11px;
+            inline-size: 11px;
+        }
+
+        .gform-field-label--type-inline{
+            font-size: 10px;
+            margin: 0;
+        }
+    }
+
+    .gform_button,
+    .gform-button{
+        font-weight: 400 !important;
+        transition-property: background-color, color !important;
+        transition-duration: 0.4s !important;
+        transition-timing-function: ease !important;
+
+        &:hover{
+            background-color: var(--wp--preset--color--primary) !important;
+            color: var(--wp--preset--color--white) !important;
+        }
+    }
+}

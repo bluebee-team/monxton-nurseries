@@ -1,0 +1,10 @@
+/* Global styles */
+a{
+    &:not(p > a){
+        text-decoration: none;
+    }
+}
+
+figure{
+    margin: 0;
+}

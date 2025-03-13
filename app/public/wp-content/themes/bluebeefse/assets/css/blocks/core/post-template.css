@@ -1,0 +1,14 @@
+/* Post Template Masonry Layout Styles */
+.wp-block-post-template.is-style-masonry-layout {
+    .wp-block-post:nth-child(6n + 3),
+    .wp-block-post:nth-child(6n + 4){
+        grid-column-end: span 2;
+    }
+
+    @media screen and (min-width: 768px) {
+        .wp-block-post:nth-child(6n + 3),
+        .wp-block-post:nth-child(6n + 4){
+            grid-column-end: span 2;
+        }
+    }
+}

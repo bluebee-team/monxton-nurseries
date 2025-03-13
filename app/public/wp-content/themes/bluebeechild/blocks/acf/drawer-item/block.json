@@ -1,0 +1,20 @@
+{
+    "name": "acf/drawer-item",
+    "title": "Drawer Item",
+    "description": "Displays a card and drawer pair - for use inside the Drawers block.",
+    "style": [ "file:./drawer-item.css" ],
+    "script": "file:./drawer-item.js",
+    "category": "design",
+    "icon": "table-row-after",
+    "keywords": ["drawer", "item", "card", "accordion", "detail"],
+    "supports": {
+        "anchor": true,
+        "align": true,
+        "mode": false
+    },
+    "ancestor": [ "acf/drawers" ],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "drawer-item.php"
+    }
+}

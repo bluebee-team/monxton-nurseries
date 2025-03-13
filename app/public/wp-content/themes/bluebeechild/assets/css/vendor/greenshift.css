@@ -1,0 +1,15 @@
+.bb-fade-active{
+    li.gspbgrid_item{
+        transition-property: opacity;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-in-out;
+
+        &:not(.swiper-slide-active) {
+            opacity: 0.5;
+
+            .wp-block-post-excerpt__excerpt{
+                display: none;
+            }
+        }
+    }
+}

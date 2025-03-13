@@ -1,0 +1,108 @@
+/* Global styles */
+.entry-content {
+    margin-block-start: 0 !important;
+
+    > div {
+        isolation: isolate;
+        margin-block-start: 0 !important;
+    }
+
+    &:not(.wp-block-post-content) {
+        > * {
+            margin: 0;
+        }
+    }
+}
+
+footer.wp-block-template-part{
+    margin: 0;
+}
+
+/* Header */
+header.wp-block-template-part {
+    top: 0;
+    transition-property: top;
+    transition-duration: 0.35s;
+    transition-timing-function: ease-in-out;
+    width: 100%;
+    z-index: 99;
+
+    &:not(.block-editor-iframe__body header.wp-block-template-part){
+        position: fixed !important;
+
+        .main-header-wrapper{
+            transition-property: background-color, padding;
+            transition-duration: 0.35s;
+            transition-timing-function: ease-in-out;
+        }
+    }
+
+    .wp-block-site-logo{
+        max-width: 248px;
+        transition-property: max-width;
+        transition-duration: 0.35s;
+        transition-timing-function: ease-in-out;
+    }
+
+    .hide-on-scroll{
+        display: grid;
+        grid-template-rows: 1fr;
+        overflow: hidden;
+        transition-property: grid-template-rows, margin, padding;
+        transition-duration: 0.35s;
+        transition-timing-function: ease-in-out;
+
+        .hide-on-scroll--inner{
+            min-height: 0;
+            opacity: 1;
+            visibility: visible;
+            transition-property: opacity, visibility;
+            transition-duration: 0.35s;
+            transition-timing-function: ease-in-out;
+        }
+    }
+
+    .top-navigation-wrapper {
+        margin-bottom: 10px;
+    }
+
+    &.scrolling{
+        .wp-block-site-logo{
+            max-width: 100px;
+        }
+
+        .hide-on-scroll{
+            grid-template-rows: 0fr;
+            margin-bottom: 0;
+            padding-bottom: 0 !important;
+            padding-top: 0 !important;
+
+            .hide-on-scroll--inner {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .main-header-wrapper{
+            padding-bottom: 10px !important;
+            padding-top: 10px !important;
+        }
+    }
+
+    &:not(.scrolling){
+        &:not(.block-editor-iframe__body header.wp-block-template-part){
+            .main-header-wrapper{
+                background-color: transparent !important;
+            }
+        }
+
+    }
+}
+
+iframe:not(.edit-site-visual-editor__editor-canvas){
+    border-radius: 16px;
+}
+
+.hide-overflow{
+    overflow: hidden;
+}

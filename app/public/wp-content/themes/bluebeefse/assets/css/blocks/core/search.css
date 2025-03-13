@@ -1,0 +1,50 @@
+/* Adjust search input size */
+.wp-block-search__inside-wrapper  {
+    &:is(header .wp-block-search__inside-wrapper){
+        height: 30px;
+    }
+
+    input{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+/* Adjust search icon */
+.wp-block-search__button.has-icon {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-width: 20px;
+    padding: 10px;
+
+    &::before{
+        content: "\e986";
+        font-family: 'icomoon';
+        font-size: var(--wp--preset--font-size--small-secondary);
+    }
+
+    svg{
+        display: none;
+    }
+}
+
+.wp-block-search.wp-block-search__button-only{
+    position: relative;
+
+    .wp-block-search__input{
+        position: absolute;
+        right: calc(100% + 10px);
+        top: 50%;
+        translate: 0 -50% 0;
+    }
+
+    .wp-block-search__button{
+        max-width: unset;
+        padding: 0;
+    }
+}
+
+.wp-block-search__button-behavior-expand .wp-block-search__inside-wrapper{
+    transition-duration: 0.3s;
+}

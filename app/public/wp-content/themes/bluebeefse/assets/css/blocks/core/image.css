@@ -1,0 +1,7 @@
+/* Make image lightbox show full image regardless of crop setting in Edtior */
+.lightbox-image-container {
+    img {
+        /* !important necessary to overrule JS-injected style */
+        object-fit: contain !important;
+    }
+}

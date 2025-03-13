@@ -1,0 +1,67 @@
+/* Adjust Details General Styles */
+details.wp-block-details {
+    border-radius: 0;
+
+    summary{
+        list-style: none;
+        padding-right: 38px;
+        position: relative;
+        transition: all 0.2s ease-in;
+
+        &::after{
+            content: "\ea0a";
+            font-family: 'icomoon';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transition: all 0.2s ease-in;
+            translate: 0 -50% 0;
+        }
+    }
+
+    &.is-selected,
+    &[open]{
+        summary{
+            &::after{
+                rotate: 45deg;
+            }
+        }
+    }
+}
+
+/* Adjust Details Custom Style 1 */
+details.wp-block-details.is-style-with-background-colour {
+    background-color: transparent;
+    border-radius: 0;
+    padding: 18px 30px 18px 0;
+    transition: all 0.2s ease-in;
+
+    > *{
+        padding-left: 70px;
+    }
+
+    summary{
+        &::after{
+            left: 30px;
+            right: unset;
+        }
+
+        + * {
+            margin-top: 5px;
+        }
+    }
+
+    + .wp-block-details {
+        border-top: unset;
+    }
+
+    &.is-selected,
+    &[open]{
+        padding: 34px 30px 34px 0;
+    }
+}
+
+details > summary::marker, /* Latest Chrome, Edge, Firefox */
+details > summary::-webkit-details-marker /* Safari */ {
+    display: none;
+}

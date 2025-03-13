@@ -1,0 +1,59 @@
+/* Adjust main navigation dropdown menu styles */
+.wp-block-navigation.main-navigation ul.wp-block-navigation__container > li{
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.wp-block-navigation.main-navigation ul.wp-block-navigation__submenu-container {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+/* Adjust mobile menu modal styles */
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content{
+    align-items: flex-start;
+    padding-left: var(--wp--custom--block-gap);
+    padding-right: var(--wp--custom--block-gap);
+    padding-top: calc(var(--wp--custom--block-gap) * 3);
+}
+
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__container {
+    align-items: flex-start;
+    gap: 0;
+}
+
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container{
+  gap: 10px;
+
+  .wp-block-navigation-item{
+    align-items: flex-start;
+
+    .wp-block-navigation-submenu{
+      padding-left: 1rem;
+    }
+  }
+}
+
+/* Adjust mobile menu modal close button styles */
+.wp-block-navigation__responsive-container-close{
+    right: var(--wp--custom--block-gap);
+    top: var(--wp--custom--block-gap);
+}
+
+/* Adjust mobile menu breakpoint to match visibility plugin's mobile breakpoint */
+@media ( min-width: 768px ) {
+    .wp-block-navigation__responsive-container-open:not(.always-shown) {
+      display: none !important;
+    }
+    .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+      display: block !important;
+    }
+}
+@media ( min-width: 600px ) {
+    .wp-block-navigation__responsive-container-open:not(.always-shown) {
+      display: flex;
+    }
+    .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+      display: none;
+    }
+}

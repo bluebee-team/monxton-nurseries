@@ -1,0 +1,20 @@
+{
+    "name": "acf/drawers",
+    "title": "Drawers",
+    "description": "Displays a series of drawers - a kind of specialised card/details block.",
+    "style": [ "file:./drawers.css" ],
+    "script": "file:./drawers.js",
+    "category": "design",
+    "icon": "table-row-after",
+    "keywords": ["drawers", "card", "accordion", "detail"],
+    "supports": {
+        "anchor": true,
+        "align": false,
+        "mode": false
+    },
+    "allowedBlocks": [ "acf/drawer-item" ],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "drawers.php"
+    }
+}
