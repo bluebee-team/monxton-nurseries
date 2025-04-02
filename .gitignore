@@ -1,0 +1,4 @@
+.DS_Store
+app/.DS_Store
+logs/nginx/error.log
+logs/nginx/error.log
