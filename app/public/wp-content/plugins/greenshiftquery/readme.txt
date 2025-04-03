@@ -6,7 +6,7 @@ Author URI: https://greenshiftwp.com/
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 7.3
-Stable tag: 5.4.5
+Stable tag: 5.4.7
 
 Get values from any custom meta, attributes or custom taxonomy. Use better query block. Add post views, thumbs counter.
 

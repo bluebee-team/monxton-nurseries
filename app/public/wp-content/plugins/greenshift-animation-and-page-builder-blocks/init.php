@@ -523,7 +523,7 @@ function gspb_greenShift_register_scripts_blocks(){
 		'gs-greenpanel',
 		GREENSHIFT_DIR_URL . 'libs/greenpanel/index.js',
 		array(),
-		'1.6',
+		'1.7',
 		true
 	);
 
@@ -632,15 +632,20 @@ function gspb_greenShift_register_scripts_blocks(){
 		'gspb_api',
 		GREENSHIFT_DIR_URL . 'libs/api/index.js',
 		array(),
-		'1.3',
+		'1.7',
 		true
 	);
+
+	// Add nonce to gspb_api script
+	wp_localize_script('gspb_api', 'gspbApiSettings', array(
+		'nonce' => wp_create_nonce('wp_rest'),
+	));
 
 	wp_register_script(
 		'gspb_interactions',
 		GREENSHIFT_DIR_URL . 'libs/interactionlayer/index.js',
 		array(),
-		'4.4',
+		'4.6',
 		true
 	);
 
@@ -665,25 +670,25 @@ function gspb_greenShift_register_scripts_blocks(){
 		'greenShift-library-editor',
 		GREENSHIFT_DIR_URL . 'build/gspbLibrary.css',
 		'',
-		'10.8.6.6'
+		'11.3'
 	);
 	wp_register_style(
 		'greenShift-block-css', // Handle.
 		GREENSHIFT_DIR_URL . 'build/index.css', // Block editor CSS.
 		array('greenShift-library-editor', 'wp-edit-blocks'),
-		'10.8.6.6'
+		'11.3'
 	);
 	wp_register_style(
 		'greenShift-stylebook-css', // Handle.
 		GREENSHIFT_DIR_URL . 'build/gspbStylebook.css', // Block editor CSS.
 		array(),
-		'10.8.6.6'
+		'11.3'
 	);
 	wp_register_style(
 		'greenShift-admin-css', // Handle.
 		GREENSHIFT_DIR_URL . 'templates/admin/style.css', // admin css
 		array(),
-		'10.8.6.6'
+		'11.3'
 	);
 
 	//Script for ajax reusable loading
@@ -2480,7 +2485,29 @@ function gspb_register_route()
 					'type' => 'string',
 					'required' => false,
 					'default' => 'row',
-				)
+				),
+				'remove_rows' => array(
+					'type' => 'string',
+					'required' => false,
+				),
+				'remove_columns' => array(
+					'type' => 'string',
+					'required' => false,
+				),
+			),
+		]
+	]);
+
+	register_rest_route('greenshift/v1', '/proxy-api/', [
+		[
+			'methods' => 'POST',
+			'callback' => 'gspb_make_proxy_api_request',
+			'permission_callback' => '__return_true',
+			'args' => array(
+				'type' => array(
+					'type' => 'string',
+					'required' => true,
+				),
 			),
 		]
 	]);
@@ -2876,6 +2903,8 @@ function gspb_get_csv_to_json(WP_REST_Request $request)
 {
 	$url = sanitize_text_field($request->get_param('url'));
 	$type = sanitize_text_field($request->get_param('type') ?: 'row');
+	$remove_rows = $request->get_param('remove_rows') ? array_map('intval', explode(',', sanitize_text_field($request->get_param('remove_rows')))) : [];
+	$remove_columns = $request->get_param('remove_columns') ? array_map('intval', explode(',', sanitize_text_field($request->get_param('remove_columns')))) : [];
 	$result = [];
 	
 	if($url){
@@ -2918,12 +2947,28 @@ function gspb_get_csv_to_json(WP_REST_Request $request)
 				];
 				
 				// Process each line directly as a data row
-				foreach($lines as $line) {
+				foreach($lines as $line_num => $line) {
+					// Skip removed rows - convert from 1-based to 0-based indexing
+					$adjusted_remove_rows = array_map(function($row) { return $row - 1; }, $remove_rows);
+					if(in_array($line_num, $adjusted_remove_rows)) {
+						continue;
+					}
+					
 					$line = trim($line);
 					if(empty($line)) continue;
 					
 					// Parse this line as CSV
 					$row = str_getcsv($line);
+					
+					// Remove specified columns - convert from 1-based to 0-based indexing
+					$adjusted_remove_columns = array_map(function($col) { return $col - 1; }, $remove_columns);
+					foreach($adjusted_remove_columns as $col_num) {
+						if(isset($row[$col_num])) {
+							unset($row[$col_num]);
+						}
+					}
+					// Re-index array after removing columns
+					$row = array_values($row);
 					
 					// We need at least 2 columns
 					if(count($row) >= 2) {
@@ -2953,14 +2998,41 @@ function gspb_get_csv_to_json(WP_REST_Request $request)
 			foreach($lines as $line_num => $line) {
 				if(empty(trim($line))) continue;
 				
+				// Create adjusted arrays for 1-based to 0-based indexing
+				$adjusted_remove_rows = array_map(function($row) { return $row - 1; }, $remove_rows);
+				$adjusted_remove_columns = array_map(function($col) { return $col - 1; }, $remove_columns);
+				
+				// Skip removed rows (except header row if we're keeping headers)
+				if($line_num > 0 && in_array($line_num, $adjusted_remove_rows)) {
+					continue;
+				}
+				
 				// str_getcsv handles CSV parsing including quoted values with commas
 				$row = str_getcsv($line);
 				
 				if($line_num === 0) {
 					// First line contains headers
+					// Remove specified columns from headers
+					foreach($adjusted_remove_columns as $col_num) {
+						if(isset($row[$col_num])) {
+							unset($row[$col_num]);
+						}
+					}
+					// Re-index headers array after removing columns
+					$row = array_values($row);
+					
 					$headers = array_map('trim', $row);
 				} else {
 					// Data rows
+					// Remove specified columns
+					foreach($adjusted_remove_columns as $col_num) {
+						if(isset($row[$col_num])) {
+							unset($row[$col_num]);
+						}
+					}
+					// Re-index array after removing columns
+					$row = array_values($row);
+					
 					$item = [];
 					foreach($row as $column_num => $cell) {
 						if(isset($headers[$column_num])) {
@@ -2993,6 +3065,57 @@ function gspb_get_csv_to_json(WP_REST_Request $request)
 					}
 					
 					$result[] = $columnData;
+				}
+			}
+			// Column with heading format - first column values as keys
+			elseif($type === 'column_w_heading' && !empty($data) && !empty($headers)) {
+				$result = [];
+				$firstColumnHeader = $headers[0]; // Get the first column header
+				
+				// Create arrays for each column (starting from the second column)
+				for($i = 1; $i < count($headers); $i++) {
+					$columnHeader = $headers[$i];
+					$columnArray = [];
+					
+					// First item in the array is the column header with its name
+					$columnArray[$firstColumnHeader] = $columnHeader;
+					
+					// For each row, create a key-value pair using first column as key
+					foreach($data as $row) {
+						if(isset($row[$firstColumnHeader]) && isset($row[$columnHeader])) {
+							$key = $row[$firstColumnHeader];
+							$value = $row[$columnHeader];
+							$columnArray[$key] = $value;
+						}
+					}
+					
+					// Add this column's array to the result
+					$result[] = $columnArray;
+				}
+			}
+			// Row with heading format - first row (headers) as keys for pairs
+			elseif($type === 'row_w_heading' && !empty($data) && !empty($headers)) {
+				$result = [];
+				
+				// Process each row and create an associative array
+				foreach($data as $rowIndex => $row) {
+					$rowArray = [];
+					$firstColumnHeader = $headers[0];
+					$rowIdentifier = $row[$firstColumnHeader]; // Use first column value as row identifier
+					
+					// First pair is the first column header with the row identifier
+					$rowArray[$firstColumnHeader] = $rowIdentifier;
+					
+					// Add all other columns using headers as keys
+					for($i = 1; $i < count($headers); $i++) {
+						$header = $headers[$i];
+						if(isset($row[$header])) {
+							$rowArray[$header] = $row[$header];
+						}
+					}
+					
+					// Add this row's array to the result
+					$result[] = $rowArray;
 				}
 			}
 			// ApexChart format - Years on x-axis, Countries as series
@@ -3157,6 +3280,134 @@ function gspb_get_csv_to_json(WP_REST_Request $request)
 	}
 
 	// Return the PHP array directly - WordPress REST API will handle JSON encoding
+	return $result;
+}
+
+function gspb_make_proxy_api_request(WP_REST_Request $request)
+{
+	$nonce = $request->get_header('X-WP-Nonce');
+    
+    if (!wp_verify_nonce($nonce, 'wp_rest')) {
+        return new WP_Error('rest_forbidden', __('Unauthorized Nonce', 'greenshift-animation-and-page-builder-blocks'), ['status' => 403]);
+    }
+	$type = sanitize_text_field($request->get_param('type'));
+	// Get body parameters from the request
+	$body = $request->get_body();
+	if (!empty($body)) {
+		$body = json_decode($body, true);
+	} else {
+		$body = array();
+	}
+	
+	// Fallback to get_json_params() if the above method didn't work
+	if (empty($body) || !is_array($body)) {
+		$body = $request->get_json_params();
+		if (empty($body) || !is_array($body)) {
+			$body = array();
+		}
+	}
+	$result = null;
+	
+	if ($type === 'openaicompletion') {
+		$api_key = get_option('gspb_global_settings');
+		$api_key = $api_key['openaiapi'];
+		
+		if (empty($api_key)) {
+			return new WP_Error('missing_api_key', 'OpenAI API key is missing', array('status' => 400));
+		}
+		
+		$endpoint = 'https://api.openai.com/v1/chat/completions';
+		$headers = array(
+			'Authorization' => 'Bearer ' . $api_key,
+			'Content-Type' => 'application/json'
+		);
+	} else if($type === 'openairesponse'){
+		$api_key = get_option('gspb_global_settings');
+		$api_key = $api_key['openaiapi'];
+		
+		if (empty($api_key)) {
+			return new WP_Error('missing_api_key', 'OpenAI API key is missing', array('status' => 400));
+		}
+		$endpoint = 'https://api.openai.com/v1/responses';
+		$headers = array(
+			'Authorization' => 'Bearer ' . $api_key,
+			'Content-Type' => 'application/json'
+		);
+	} else {
+		return new WP_Error('invalid_type', 'Invalid API type specified', array('status' => 400));
+	}
+
+	// Check if streaming is enabled
+	$is_streaming = isset($body['stream']) && $body['stream'] === true;
+
+	if ($is_streaming) {
+		// Set proper headers for streaming
+		header('Content-Type: text/event-stream');
+		header('Cache-Control: no-cache');
+		header('Connection: keep-alive');
+		header('X-Accel-Buffering: no'); // Important for Nginx
+		
+		// Ensure output buffering is handled properly
+		if (ob_get_level() > 0) {
+			ob_end_flush();
+		}
+		
+		// Initialize cURL
+		$ch = curl_init($endpoint);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, [
+			'Authorization: Bearer ' . $api_key,
+			'Content-Type: application/json'
+		]);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($body));
+		curl_setopt($ch, CURLOPT_WRITEFUNCTION, function($ch, $data) {
+			// Process each chunk of data
+			echo $data; // Simply forward the data as-is
+			
+			// Force flush after each chunk
+			if (ob_get_level() > 0) {
+				ob_flush();
+			}
+			flush();
+			
+			return strlen($data);
+		});
+		
+		$response = curl_exec($ch);
+		
+		if (curl_errno($ch)) {
+			echo "data: " . json_encode(['error' => curl_error($ch)]) . "\n\n";
+			flush();
+		}
+		
+		curl_close($ch);
+		exit;
+	} else {
+		// Standard non-streaming request
+		$response = wp_safe_remote_post($endpoint, array(
+			'headers' => $headers,
+			'body' => json_encode($body),
+			'timeout' => 120
+		));
+		
+		if (is_wp_error($response)) {
+			return $response;
+		}
+		
+		$response_code = wp_remote_retrieve_response_code($response);
+		$response_body = wp_remote_retrieve_body($response);
+		
+		if ($response_code !== 200) {
+			return new WP_Error(
+				'api_error',
+				'Error from OpenAI API: ' . $response_body,
+				array('status' => $response_code)
+			);
+		}
+		
+		$result = json_decode($response_body, true);
+	}
+	
 	return $result;
 }
 

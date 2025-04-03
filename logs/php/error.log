@@ -1,0 +1,30 @@
+[02-Apr-2025 09:10:34 UTC] PHP Warning:  PHP Startup: imagick: Unable to initialize module
+Module compiled with module API=20210902
+PHP    compiled with module API=20220829
+These options need to match
+ in Unknown on line 0
+[02-Apr-2025 09:10:34 UTC] PHP Warning:  PHP Startup: imagick: Unable to initialize module
+Module compiled with module API=20210902
+PHP    compiled with module API=20220829
+These options need to match
+ in Unknown on line 0
+[02-Apr-2025 09:33:10 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php on line 167
+[02-Apr-2025 09:33:10 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php on line 167
+[02-Apr-2025 10:13:59 UTC] PHP Warning:  Undefined array key "width" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-admin/includes/image.php on line 110
+[02-Apr-2025 10:13:59 UTC] PHP Warning:  Undefined array key "height" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-admin/includes/image.php on line 111
+[02-Apr-2025 12:01:53 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php on line 167
+[02-Apr-2025 12:01:53 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php on line 167
+[02-Apr-2025 12:14:48 UTC] PHP Warning:  Undefined array key "width" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-admin/includes/image.php on line 110
+[02-Apr-2025 12:14:48 UTC] PHP Warning:  Undefined array key "height" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-admin/includes/image.php on line 111
+[02-Apr-2025 13:56:26 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php on line 167
+[02-Apr-2025 13:56:26 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php on line 167
+[02-Apr-2025 14:38:28 UTC] PHP Warning:  Undefined array key "width" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-admin/includes/image.php on line 110
+[02-Apr-2025 14:38:28 UTC] PHP Warning:  Undefined array key "height" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-admin/includes/image.php on line 111
+[02-Apr-2025 14:38:28 UTC] PHP Warning:  Undefined array key "width" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-admin/includes/image.php on line 110
+[02-Apr-2025 14:38:28 UTC] PHP Warning:  Undefined array key "height" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-admin/includes/image.php on line 111
+[02-Apr-2025 14:38:28 UTC] PHP Warning:  Undefined array key "width" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-admin/includes/image.php on line 110
+[02-Apr-2025 14:38:28 UTC] PHP Warning:  Undefined array key "height" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-admin/includes/image.php on line 111
+[02-Apr-2025 14:38:28 UTC] PHP Warning:  Undefined array key "width" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-admin/includes/image.php on line 110
+[02-Apr-2025 14:38:28 UTC] PHP Warning:  Undefined array key "height" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-admin/includes/image.php on line 111
+[02-Apr-2025 15:26:33 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php on line 167
+[02-Apr-2025 15:26:33 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php on line 167

@@ -1377,6 +1377,15 @@ if (!class_exists('GSPB_Postfilters')) {
 							case 'equal':
 								$compare = '=';
 								break;
+							case 'less_equal':
+								$compare = '<=';
+								break;
+							case 'more_equal':
+								$compare = '>=';
+								break;
+							case 'not_equal':
+								$compare = '!=';
+								break;
 							default:
 								$compare = $condition['custom_field_compare'];
 								break;

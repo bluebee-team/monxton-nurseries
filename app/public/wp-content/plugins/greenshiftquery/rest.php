@@ -2675,12 +2675,14 @@ function GSPB_make_dynamic_text($dynamic_text, $attrs, $block, $attribute, $attr
     $postid = '';
 
     $repeaterField = !empty($attribute['repeaterField']) ? $attribute['repeaterField'] : '';
-    if ($repeaterField && !empty($attribute['repeaterArray'][$repeaterField])) {
+    if ($repeaterField && !empty($attribute['repeaterArray'])) {
         $text_replace = GSPB_get_value_from_array_field($repeaterField, $attribute['repeaterArray']);
-        if(!empty($attribute['postprocessor']) && $attribute['postprocessor'] == 'json'){
-            //do nothing. Add json postprocessor below
-        }else{
-            $text_replace = GSPB_field_array_to_value($text_replace, ', ');
+        if(!empty($text_replace)){
+            if(!empty($attribute['postprocessor']) && $attribute['postprocessor'] == 'json'){
+                //do nothing. Add json postprocessor below
+            }else{
+                $text_replace = GSPB_field_array_to_value($text_replace, ', ');
+            }
         }
     } else {
         if (!empty($attribute['dynamicSource']) && $attribute['dynamicSource'] == 'definite_item') {
@@ -2864,6 +2866,7 @@ function GSPB_make_dynamic_text($dynamic_text, $attrs, $block, $attribute, $attr
     }
 
     if ($text_replace && $textoriginal) {
+        $dynamic_text = str_replace('$', '\$', $dynamic_text);
         // Use preg_replace_callback to handle the replacement safely
 		$pattern = '/<dynamictext>.*?<\/dynamictext>/s';  // Added 's' modifier for multiline
         return preg_replace_callback($pattern, 

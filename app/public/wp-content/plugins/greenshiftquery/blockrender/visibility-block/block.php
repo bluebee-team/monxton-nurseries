@@ -714,9 +714,11 @@ class VisibilityBlock
 				$result = $post_meta < $value;
 				break;
 			case '<=':
+			case 'less_equal':
 				$result = $post_meta <= $value;
 				break;
 			case '>=':
+			case 'more_equal':
 				$result = $post_meta >= $value;
 				break;
 			case 'more':
@@ -777,9 +779,11 @@ class VisibilityBlock
 					$result = $post_meta < $value;
 					break;
 				case '<=':
+				case 'less_equal':
 					$result = $post_meta <= $value;
 					break;
 				case '>=':
+				case 'more_equal':
 					$result = $post_meta >= $value;
 					break;
 				case 'more':

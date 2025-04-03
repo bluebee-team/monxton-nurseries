@@ -190,6 +190,22 @@ class GridQuery
 			'type' => 'string',
 			'default' => '0',
 		),
+		'wrapperClasses' => array(
+			'type' => 'string',
+			'default' => '',
+		),
+		'itemClasses' => array(
+			'type' => 'string',
+			'default' => '',
+		),
+		'itemTag' => array(
+			'type' => 'string',
+			'default' => 'li',
+		),
+		'wrapperTag' => array(
+			'type' => 'string',
+			'default' => 'ul',
+		),
 	);
 
 	protected function action()
@@ -281,7 +297,7 @@ class GridQuery
 		} else {
 			$infinitescrollwrap = '';
 		}
-		$containerid = 'gspb_filterid_' . $settings['id'];
+		$containerid = 'gspb_filterid_' . esc_attr($settings['id']);
 		$ajaxoffset = (int)$show + (int)$offset;
 		if (isset($align)) {
 			if ($align == 'full') {
@@ -300,12 +316,13 @@ class GridQuery
 		$data_attributes = \gspb_getDataAttributesfromDynamic($settings);
 		$wrapper_attributes = get_block_wrapper_attributes(
 			array(
-				'class' => $blockId . ' gspbgrid-wrap-grid ' . $alignClass,
+				'class' => $blockId . ' gspbgrid_list_builder wp-block-query ' . $alignClass . ' ' . $containerid . ' ' . $infinitescrollwrap .($isSlider ? ' swiper' : ''),
 				...$data_attributes
 			)
 		);
+		$tagItem = $itemTag ? $itemTag : 'li';
+		$tagWrapper = $wrapperTag ? $wrapperTag : 'ul';
 		?>
-		<div id="<?php echo esc_attr($blockId);?>" <?php echo '' . $wrapper_attributes . gspb_AnimationRenderProps($animation, $interactionLayers, ".gspbgrid_item"); ?>>
 			<?php 		
 			$new_instance = $block_instance;
 			$inlineStyles = $this->extractInlineCssStyles($new_instance);
@@ -340,14 +357,6 @@ class GridQuery
 
 			?>
 			<?php if ($wp_query->have_posts()) : ?>
-				<?php if ($title) : ?>
-					<div class="gspbgrid-block__title">
-						<?php echo esc_html($title); ?>
-					</div>
-				<?php endif; ?>
-				<?php if (!empty($settings['filterpanelenable'])) : ?>
-					<?php gspb_vc_filterpanel_render($filterpanel, $containerid, $taxdrop, $taxdroplabel, $taxdropids, $filterheading, $alldroplabel); ?>
-				<?php endif; ?>
 				<?php
 				if (!empty($args['paged'])) {
 					unset($args['paged']);
@@ -355,9 +364,17 @@ class GridQuery
 				$jsonargs = json_encode($args);
 				$json_innerargs = $listargs;
 				?>
-				<div class="gspbgrid_list_builder wp-block-query <?php echo esc_attr($containerid);?> <?php echo $isSlider ? 'swiper' : ''; ?><?php echo '' . $infinitescrollwrap; ?>" data-filterargs='<?php echo '' . ($filterpanel || $enable_pagination == '2' || $enable_pagination == '3') ? $jsonargs : "" . ''; ?>' data-template="querybuilder" id="<?php echo esc_attr($containerid); ?>" data-innerargs='<?php echo '' . $json_innerargs . ''; ?>' data-perpage='<?php echo '' . $show . ''; ?>'  data-paginationtype="<?php echo $paginationtype; ?>">
+				<div id="<?php echo esc_attr($containerid);?>" <?php echo '' . $wrapper_attributes . gspb_AnimationRenderProps($animation, $interactionLayers, ".gspbgrid_item"); ?> data-filterargs='<?php echo '' . ($filterpanel || $enable_pagination == '2' || $enable_pagination == '3') ? $jsonargs : "" . ''; ?>' data-template="querybuilder" id="<?php echo esc_attr($containerid); ?>" data-innerargs='<?php echo '' . $json_innerargs . ''; ?>' data-perpage='<?php echo '' . $show . ''; ?>'  data-paginationtype="<?php echo $paginationtype; ?>">
+					<?php if ($title) : ?>
+						<div class="gspbgrid-block__title">
+							<?php echo esc_html($title); ?>
+						</div>
+					<?php endif; ?>
+					<?php if (!empty($settings['filterpanelenable'])) : ?>
+						<?php gspb_vc_filterpanel_render($filterpanel, $containerid, $taxdrop, $taxdroplabel, $taxdropids, $filterheading, $alldroplabel); ?>
+					<?php endif; ?>
 
-					<ul class="wp-block-post-template<?php echo $isSlider ? ' swiper-wrapper' : ''; ?>" data-currentpage="<?php echo $current_page; ?>" data-maxpage="<?php echo $pages; ?>" data-paginationid="currentpage-<?php echo $containerid; ?>">
+					<<?php echo $tagWrapper; ?> class="wp-block-post-template<?php echo $isSlider ? ' swiper-wrapper' : ''; ?><?php echo $wrapperClasses ? ' '.esc_attr($wrapperClasses) : ''; ?>" data-currentpage="<?php echo $current_page; ?>" data-maxpage="<?php echo $pages; ?>" data-paginationid="currentpage-<?php echo $containerid; ?>">
 						<?php $i = 0;
 						while ($wp_query->have_posts()) : $wp_query->the_post();
 							$i++;
@@ -375,7 +392,7 @@ class GridQuery
                                 }
                             } ?>
 						<?php endwhile; ?>
-					</ul>
+					</<?php echo $tagWrapper; ?>>
 					<?php if ($enable_pagination == '1') : ?>
 						<div class="clearfix"></div>
 						<div class="pagination"><?php the_posts_pagination(); ?></div>
@@ -437,7 +454,7 @@ class GridQuery
 					</div>
 				<?php endif;?>
 			<?php endif;wp_reset_query(); ?>
-		</div>
+
 		<?php if($data_source == 'autoshop'):?>
 			<div style="display:none">
 				<?php echo do_blocks('<!-- wp:query {"queryId":10,"query":{"perPage":9,"pages":0,"offset":0,"postType":"product","order":"asc","orderBy":"title","author":"","search":"","exclude":[],"sticky":"","inherit":true,"__woocommerceAttributes":[],"__woocommerceStockStatus":["instock","outofstock","onbackorder"]},"displayLayout":{"type":"flex","columns":4},"namespace":"woocommerce/product-query"} --><div class="wp-block-query"><!-- wp:post-template {"__woocommerceNamespace":"woocommerce/product-query/product-template"} --><!-- /wp:post-template --></div><!-- /wp:query -->');?>

@@ -179,7 +179,6 @@ class RepeaterQuery
 			// Do something with the current block.
 			// For example, you could output the block's content:
 			//echo $block['innerHTML'];
-
 			$this->addKeyToRepeaterLevels($block, 'repeaterArray', $value);
 
 			$block_content = (new \WP_Block(
@@ -666,7 +665,7 @@ class RepeaterQuery
 				$cache = false;
 				$getrepeatable = [];
 				$filters = greenshiftquery_dynamic_placeholders_array($api_filters, $extra_data, $runindex);
-                $apiUrl = !empty($filters['apiUrl']) ? $filters['apiUrl'] : '';
+                $apiUrl = !empty($filters['apiUrl']) ? (strpos($filters['apiUrl'], '%') !== false ? urldecode($filters['apiUrl']) : $filters['apiUrl']) : '';
 				$apiUrlcache = !empty($filters['apiUrlcache']) ? $filters['apiUrlcache'] : '';
 				$apiUrltransient = !empty($filters['apiUrltransient']) ? $filters['apiUrltransient'] : '';
 				if(!empty($apiUrlcache) && !empty($apiUrltransient)){
@@ -968,45 +967,46 @@ class RepeaterQuery
 		//$wrapper_attributes = get_block_wrapper_attributes(array('class' => $blockId . ' ' . $alignClass));
 	?>
 		<?php if (!empty($result) && !empty($block_instance['innerBlocks'])) : ?>
-				<?php if($wrapper):?>
-					<div class="<?php echo esc_attr($blockId . ' wp-block-greenshift-blocks-repeater ' . $alignClass . ' ' . (isset($className) ? $className : ''));?>" <?php echo gspb_AnimationRenderProps($animation, $interactionLayers, ".gspbgrid_item"); ?>>
-						<div class="gspbgrid_list_builder <?php echo $isSlider ? 'swiper' : ''; ?>">
-							<ul class="wp-block-repeater-template <?php echo $blockIdInner;?> <?php echo $isSlider ? ' swiper-wrapper' : ''; ?>">
-								<?php $i = 0;
-								foreach ($result as $key => $value) : ?>
-									<?php $i++; ?>
-									<?php if (isset($limit) && $limit > $i) continue;?>
-									<?php if (is_object($value)) {
-										$value = (array)$value;
-									} ?>
-									<li class="gspbgrid_item swiper-slide repeater-id-<?php echo (int)$key; ?>">
-										<?php    
-											if($container_link && !empty($linkTypeField) && !empty($value[$linkTypeField])){
-												$link = esc_url($value[$linkTypeField]);
-												$title = (!empty($linkTitleField) && !empty($value[$linkTitleField])) ? esc_attr($value[$linkTitleField]) : '';
-												$newWindow = (!empty($linkNewWindow)) ? ' target="_blank"' : '';
-												$linkNoFollow = (!empty($linkNoFollow)) ? ' rel="nofollow"' : '';
-												$linkSponsored = (!empty($linkSponsored)) ? ' rel="sponsored"' : '';
-												echo '<a class="gspbgrid_item_link" title="' . $title . '" href="' . $link . '"'.$newWindow.$linkNoFollow.$linkSponsored.'></a>';
-											}   
-										?>
-										<?php $this->loop_inner_blocks($block_instance['innerBlocks'], $value); ?>
-									</li>
-								<?php endforeach; ?>
-							</ul>
-						</div>
+			<?php if (isset($limit) && $limit > 0) : ?>
+				<?php $result = array_slice($result, 0, $limit); ?>
+			<?php endif; ?>
+			<?php if($wrapper):?>
+				<div class="<?php echo esc_attr($blockId . ' wp-block-greenshift-blocks-repeater ' . $alignClass . ' ' . (isset($className) ? $className : ''));?>" <?php echo gspb_AnimationRenderProps($animation, $interactionLayers, ".gspbgrid_item"); ?>>
+					<div class="gspbgrid_list_builder <?php echo $isSlider ? 'swiper' : ''; ?>">
+						<ul class="wp-block-repeater-template <?php echo $blockIdInner;?> <?php echo $isSlider ? ' swiper-wrapper' : ''; ?>">
+							<?php $i = 0;
+							foreach ($result as $key => $value) : ?>
+								<?php $i++; ?>
+								<?php if (is_object($value)) {
+									$value = (array)$value;
+								} ?>
+								<li class="gspbgrid_item swiper-slide repeater-id-<?php echo (int)$key; ?>">
+									<?php    
+										if($container_link && !empty($linkTypeField) && !empty($value[$linkTypeField])){
+											$link = esc_url($value[$linkTypeField]);
+											$title = (!empty($linkTitleField) && !empty($value[$linkTitleField])) ? esc_attr($value[$linkTitleField]) : '';
+											$newWindow = (!empty($linkNewWindow)) ? ' target="_blank"' : '';
+											$linkNoFollow = (!empty($linkNoFollow)) ? ' rel="nofollow"' : '';
+											$linkSponsored = (!empty($linkSponsored)) ? ' rel="sponsored"' : '';
+											echo '<a class="gspbgrid_item_link" title="' . $title . '" href="' . $link . '"'.$newWindow.$linkNoFollow.$linkSponsored.'></a>';
+										}   
+									?>
+									<?php $this->loop_inner_blocks($block_instance['innerBlocks'], $value); ?>
+								</li>
+							<?php endforeach; ?>
+						</ul>
 					</div>
-				<?php else: ?>
-					<?php $i = 0;
-						foreach ($result as $key => $value) : ?>
-							<?php $i++; ?>
-							<?php if (isset($limit) && $limit > $i) continue;?>
-							<?php if (is_object($value)) {
-								$value = (array)$value;
-							} ?>
-							<?php $this->loop_inner_blocks($block_instance['innerBlocks'], $value); ?>
-						<?php endforeach; ?>
-				<?php endif; ?>
+				</div>
+			<?php else: ?>
+				<?php $i = 0;
+					foreach ($result as $key => $value) : ?>
+						<?php $i++; ?>
+						<?php if (is_object($value)) {
+							$value = (array)$value;
+						} ?>
+						<?php $this->loop_inner_blocks($block_instance['innerBlocks'], $value); ?>
+					<?php endforeach; ?>
+			<?php endif; ?>
 		<?php endif; ?>
 	<?php
 		$output = ob_get_contents();

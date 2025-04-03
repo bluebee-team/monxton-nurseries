@@ -6,8 +6,10 @@
 <?php $postid = get_the_ID(); ?>
 <?php $typeclass = (!empty($block_instance['attrs']['post_type'])) ? ' type-' . $block_instance['attrs']['post_type'] : '' ?>
 <?php $typeclass = apply_filters('gspbgrid_item_class', $typeclass, $postid, $block_instance); ?>
+<?php $tagItem = (!empty($block_instance['attrs']['itemTag'])) ? $block_instance['attrs']['itemTag'] : 'li'; ?>
+<?php $itemClasses = (!empty($block_instance['attrs']['itemClasses'])) ? $block_instance['attrs']['itemClasses'] : ''; ?>
 
-<li class="gspbgrid_item swiper-slide post-<?php echo (int)$postid; ?><?php echo esc_attr($typeclass); ?>">
+<<?php echo $tagItem; ?> class="gspbgrid_item swiper-slide post-<?php echo (int)$postid; ?><?php echo esc_attr($typeclass); ?><?php echo $itemClasses ? ' '.esc_attr($itemClasses) : ''; ?>">
     <?php if (!empty($block_instance['attrs']['container_link'])) {
         if(!empty($block_instance['attrs']['linkType']) && $block_instance['attrs']['linkType'] == 'field' && !empty($block_instance['attrs']['linkTypeField'])) {
             $field = $block_instance['attrs']['linkTypeField'];
@@ -58,4 +60,4 @@
         <?php
     }
     ?>
-</li>
+</<?php echo $tagItem; ?>>

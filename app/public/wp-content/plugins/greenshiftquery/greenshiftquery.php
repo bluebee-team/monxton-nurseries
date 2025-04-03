@@ -6,7 +6,7 @@
  * Author: Wpsoul
  * Author URI: https://greenshiftwp.com
  * Text Domain: greenshiftquery
- * Version: 5.4.5
+ * Version: 5.4.8
  */
 
 // Exit if accessed directly.
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 // Define Dir URL
 define('GREENSHIFTQUERY_DIR_URL', plugin_dir_url(__FILE__));
 define('GREENSHIFTQUERY_DIR_PATH', plugin_dir_path(__FILE__));
-define('GREENSHIFTQUERY_PLUGIN_VER', '5.4.5');
+define('GREENSHIFTQUERY_PLUGIN_VER', '5.4.8');
 
 function gspb_query_is_parent_active()
 {
@@ -880,6 +880,8 @@ function filter_by_custom_meta($compare, $key = '', $value = '', $not_show_for_s
 
     $result = true;
 
+
+
     switch ($compare) {
         case 'equal':
         case 'BETWEEN':
@@ -896,10 +898,10 @@ function filter_by_custom_meta($compare, $key = '', $value = '', $not_show_for_s
         case 'less':
             $result = $post_meta < $value;
             break;
-        case '<=':
+        case 'less_equal':
             $result = $post_meta <= $value;
             break;
-        case '>=':
+        case 'more_equal':
             $result = $post_meta >= $value;
             break;
         case 'more':

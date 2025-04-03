@@ -1,0 +1,77 @@
+.wp-block-navigation {
+    /* &.main-navigation{
+        .wp-block-navigation-item__label{
+			&:is(.wp-site-blocks:has(.entry-content > :first-child:not(.has-background, .wp-block-cover)) .wp-block-navigation-item__label){
+				&:is(header:not(.scrolling) .wp-block-navigation-item__label) {
+					color: var(--wp--preset--color--black);	
+				}
+			}
+			&:is(body.single-project .wp-block-navigation-item__label),
+			&:is(body.single-post .wp-block-navigation-item__label){
+				&:is(header:not(.scrolling) .wp-block-navigation-item__label) {
+					color: var(--wp--preset--color--light-grey) !important;	
+				}
+			}
+        }
+
+        ul.wp-block-navigation__container > li {
+            padding: unset !important;
+        }
+    } */
+
+    .wp-block-navigation-item__label{
+        white-space: nowrap;
+    }
+	
+	.wp-block-navigation-item__content{
+		.wp-block-navigation-item__label{
+			display: inline-block;
+			transition-property: color, translate;
+			transition-duration: 0.2s;
+			transition-timing-function: ease;
+            color:var(--wp--preset--color--primary);
+		}
+		
+		&:hover{
+			.wp-block-navigation-item__label{
+				translate: 0 -3px 0;
+                font-weight:bold;
+			}
+		}	
+	}
+}
+
+.wp-block-navigation .header_sub-nav {
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.site-footer {
+    .wp-block-navigation {
+        .wp-block-navigation-item__content{
+            .wp-block-navigation-item__label{
+                display: inline-block;
+                transition-property: color, translate;
+                transition-duration: 0.2s;
+                transition-timing-function: ease;
+                color:var(--wp--preset--color--white);
+            }
+            
+            &:hover{
+                .wp-block-navigation-item__label{
+                    translate: 0 -3px 0;
+                    font-weight:bold;
+                }
+            }	
+        }
+    }
+}
+
+.legal-block {
+    border-top:1px solid var(--wp--preset--color--white);
+    padding-top:var(--wp--preset--spacing--small-tertiary);
+}
+
+header + * {
+    margin-top:200px;
+}
