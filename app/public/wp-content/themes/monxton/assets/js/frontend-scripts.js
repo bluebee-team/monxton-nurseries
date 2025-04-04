@@ -19,19 +19,19 @@
 //     }
 // }
 
-window.addEventListener('load', function() {
-    updatePadding();
-});
+// window.addEventListener('load', function() {
+//     updatePadding();
+// });
 
-// Run Avoid Header on full page load
-document.addEventListener('DOMContentLoaded', function() {
-    updatePadding();
-});
+// // Run Avoid Header on full page load
+// document.addEventListener('DOMContentLoaded', function() {
+//     updatePadding();
+// });
 
-// Run Avoid Header on page resize
-window.addEventListener('resize', function() {
-    updatePadding();
-});
+// // Run Avoid Header on page resize
+// window.addEventListener('resize', function() {
+//     updatePadding();
+// });
 
 // Scrolling Header
 function scrollingHeader() {
@@ -40,14 +40,20 @@ function scrollingHeader() {
 
     window.addEventListener("scroll", function () {
         var scroll = window.scrollY || document.documentElement.scrollTop;
+        const headerLogo = document.querySelector('.wp-block-site-logo');
+        const headerLogoWhite = document.querySelector('.white-logo');
 
         // Add the scrolling class when scrolled down more than 100px
         if (scroll > 60) {
             header.classList.add("scrolling");
+            headerLogo.style.display='none';
+            headerLogoWhite.style.display='block';
         }
         // Remove the scrolling class when scrolled up to less than 50px
         else if (scroll < 50) {
             header.classList.remove("scrolling");
+            headerLogo.style.display='block';
+            headerLogoWhite.style.display='none';
         }
     });
 }

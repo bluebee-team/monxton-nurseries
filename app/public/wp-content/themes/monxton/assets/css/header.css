@@ -68,3 +68,12 @@ header .wp-block-search {
         }
     }
 }
+
+header .white-logo {
+    display:none;
+    width:140px;
+    height:auto;
+    a {
+        display:block;
+    }
+}
