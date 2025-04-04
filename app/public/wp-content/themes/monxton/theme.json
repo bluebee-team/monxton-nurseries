@@ -46,6 +46,11 @@
 					"slug": "black"
 				},
 				{
+					"color": "#e8a2a2",
+					"name": "Error",
+					"slug": "error"
+				},
+				{
 					"color": "transparent",
 					"name": "Transparent",
 					"slug": "transparent"

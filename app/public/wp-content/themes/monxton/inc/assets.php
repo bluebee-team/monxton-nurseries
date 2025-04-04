@@ -7,6 +7,14 @@ add_action('enqueue_block_assets', function () {
 });
 
 /**
+ * Enqueue static styles.
+ */
+add_action('enqueue_block_assets', function () {
+    wp_enqueue_style('bluebeechild-header', get_stylesheet_directory_uri() . '/assets/css/header.css');
+});
+
+
+/**
  * Enqueue static scripts.
  */
 add_action('wp_enqueue_scripts', function () {

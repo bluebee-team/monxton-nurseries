@@ -1,26 +1,105 @@
 .gform_wrapper{
     .gform-body{
-        input[type="checkbox"]{
-            block-size: 11px;
-            inline-size: 11px;
+        .gfield_label, .gform-field-label, .gfield_label_before_complex {
+            color:var(--wp--preset--color--white)!important;
         }
-
-        .gform-field-label--type-inline{
-            font-size: 10px;
-            margin: 0;
+        input[type=text], input[type=email], input[type=tel], textarea {
+            background-color:var(--wp--preset--color--primary)!important;
+            border-radius: unset!important;
+            border:0;
+            border-bottom:1px solid var(--wp--preset--color--white)!important;
+            color:var(--wp--preset--color--white)!important;
+            padding-inline:0!important;
+        }
+        select {
+            background-color:var(--wp--preset--color--primary)!important;
+            border-radius: unset!important;
+            border:0;
+            border-bottom:1px solid var(--wp--preset--color--white)!important;
+            color:var(--wp--preset--color--white)!important;
+            padding-inline:0!important;
+        }
+        .ginput_counter {
+            color:var(--wp--preset--color--secondary)!important;
         }
     }
 
     .gform_button,
-    .gform-button{
+    .gform-button {
         font-weight: 400 !important;
-        transition-property: background-color, color !important;
-        transition-duration: 0.4s !important;
-        transition-timing-function: ease !important;
-
+        transition-property: background-color, border-color, color!important;
+        transition-duration: 0.25s!important;
+        transition-timing-function: ease-in-out!important;
+        background-color: var(--wp--preset--color--secondary)!important;
+        border-color: var(--wp--preset--color--secondary)!important;
+        color: var(--wp--preset--color--white)!important;
+        border-radius: 100px!important;
+        &::after {
+            background-image: url("../../images/arrow-white.svg");
+            background-size: contain!important;
+            content: '' !important;
+            display: inline-block!important;
+            height: 11px!important;
+            margin-left: 8px!important;
+            width: 18px!important;
+        }
         &:hover{
-            background-color: var(--wp--preset--color--primary) !important;
-            color: var(--wp--preset--color--white) !important;
+            background-color: var(--wp--preset--color--white)!important;
+            border-color: var(--wp--preset--color--white)!important;
+            color: var(--wp--preset--color--primary)!important;
+            &::after {
+                background-image: url("../../images/arrow-blue.svg")!important;
+            }
         }
     }
+    .gform-icon {
+        color:var(--wp--preset--color--secondary)!important;
+        border-color:unset;
+        &.gform-icon--circle-error {
+            color:var(--wp--preset--color--error)!important;
+            border-color:var(--wp--preset--color--error)!important;
+        }
+    }
+    .gform_validation_errors {
+        border:1px solid var(--wp--preset--color--error)!important;
+    }
+    .gform_validation_errors ol {
+        color:var(--wp--preset--color--error)!important;
+    }
+    .gform_submission_error, .gform_submission_error_link, .gform_validation_error_link, .gfield_validation_message {
+        color:var(--wp--preset--color--error)!important;
+ 
+    }
+    .gform-footer {
+        justify-content:flex-end;
+    }
 }
+
+
+
+
+
+
+
+/* Contact Form */
+/* .contact-form {
+   
+
+    .gform_button {
+        
+        &::after{
+            background-image: url("../../../images/arrow-white.svg")!important;
+        }
+        &:hover {
+            background-color: var(--wp--preset--color--white)!important;
+            border-color: var(--wp--preset--color--white)!important;
+            color: var(--wp--preset--color--primary)!important;
+            &::after{
+                background-image: url("../../../images/arrow-blue.svg")!important;
+            }
+        }
+    }
+
+
+
+} */
