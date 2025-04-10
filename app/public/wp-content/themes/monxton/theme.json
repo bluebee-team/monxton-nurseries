@@ -69,6 +69,11 @@
 			"defaultSpacingSizes": false,
 			"spacingSizes": [
 				{
+					"name": "5px",
+					"size": "5px",
+					"slug": "tiny-primary"
+				},
+				{
 					"name": "10px",
 					"size": "10px",
 					"slug": "small-primary"

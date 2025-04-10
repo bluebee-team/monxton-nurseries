@@ -34,3 +34,122 @@ These options need to match
 [04-Apr-2025 14:12:21 UTC] PHP Warning:  Undefined array key "height" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-admin/includes/image.php on line 111
 [04-Apr-2025 14:14:03 UTC] PHP Warning:  Undefined array key "width" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-admin/includes/image.php on line 110
 [04-Apr-2025 14:14:03 UTC] PHP Warning:  Undefined array key "height" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-admin/includes/image.php on line 111
+[09-Apr-2025 09:41:51 UTC] PHP Warning:  Undefined array key "postId" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/src/Blocks/BlockTypes/ProductAverageRating.php on line 86
+[09-Apr-2025 09:41:51 UTC] PHP Warning:  Undefined array key "postId" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/src/Blocks/BlockTypes/ProductAverageRating.php on line 86
+[09-Apr-2025 09:41:51 UTC] PHP Warning:  Undefined array key "postId" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/src/Blocks/BlockTypes/ProductAverageRating.php on line 86
+[10-Apr-2025 10:25:41 UTC] PHP Warning:  Undefined variable $product_sku in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/woocommerce/single-product/add-to-cart/simple.php on line 50
+[10-Apr-2025 10:39:48 UTC] PHP Warning:  Undefined variable $variation_id in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/woocommerce/single-product/add-to-cart/variable.php on line 92
+[10-Apr-2025 10:40:34 UTC] PHP Fatal error:  Uncaught Error: Call to a member function get_sku() on array in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/woocommerce/single-product/add-to-cart/variable.php:93
+Stack trace:
+#0 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/includes/wc-core-functions.php(346): include()
+#1 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1921): wc_get_template('single-product/...', Array)
+#2 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-hook.php(324): woocommerce_variable_add_to_cart('')
+#3 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#4 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#5 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/src/Blocks/BlockTypes/AddToCartForm.php(164): do_action('woocommerce_var...')
+#6 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/src/Blocks/BlockTypes/AbstractBlock.php(98): Automattic\WooCommerce\Blocks\BlockTypes\AddToCartForm->render(Array, '', Object(WP_Block))
+#7 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(537): Automattic\WooCommerce\Blocks\BlockTypes\AbstractBlock->render_callback(Array, '', Object(WP_Block))
+#8 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#9 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#10 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#11 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#12 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#13 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/blocks.php(2191): WP_Block->render()
+#14 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/blocks.php(2243): render_block(Array)
+#15 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/block-template.php(263): do_blocks('<!-- wp:templat...')
+#16 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/template-canvas.php(12): get_the_block_template_html()
+#17 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/template-loader.php(106): include('/Users/oliversc...')
+#18 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-blog-header.php(19): require_once('/Users/oliversc...')
+#19 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/index.php(17): require('/Users/oliversc...')
+#20 {main}
+  thrown in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/woocommerce/single-product/add-to-cart/variable.php on line 93
+[10-Apr-2025 10:40:44 UTC] PHP Fatal error:  Uncaught Error: Call to a member function get_sku() on array in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/woocommerce/single-product/add-to-cart/variable.php:87
+Stack trace:
+#0 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/includes/wc-core-functions.php(346): include()
+#1 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1921): wc_get_template('single-product/...', Array)
+#2 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-hook.php(324): woocommerce_variable_add_to_cart('')
+#3 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#4 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#5 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/src/Blocks/BlockTypes/AddToCartForm.php(164): do_action('woocommerce_var...')
+#6 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/src/Blocks/BlockTypes/AbstractBlock.php(98): Automattic\WooCommerce\Blocks\BlockTypes\AddToCartForm->render(Array, '', Object(WP_Block))
+#7 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(537): Automattic\WooCommerce\Blocks\BlockTypes\AbstractBlock->render_callback(Array, '', Object(WP_Block))
+#8 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#9 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#10 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#11 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#12 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#13 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/blocks.php(2191): WP_Block->render()
+#14 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/blocks.php(2243): render_block(Array)
+#15 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/block-template.php(263): do_blocks('<!-- wp:templat...')
+#16 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/template-canvas.php(12): get_the_block_template_html()
+#17 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/template-loader.php(106): include('/Users/oliversc...')
+#18 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-blog-header.php(19): require_once('/Users/oliversc...')
+#19 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/index.php(17): require('/Users/oliversc...')
+#20 {main}
+  thrown in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/woocommerce/single-product/add-to-cart/variable.php on line 87
+[10-Apr-2025 10:40:45 UTC] PHP Fatal error:  Uncaught Error: Call to a member function get_sku() on array in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/woocommerce/single-product/add-to-cart/variable.php:87
+Stack trace:
+#0 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/includes/wc-core-functions.php(346): include()
+#1 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1921): wc_get_template('single-product/...', Array)
+#2 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-hook.php(324): woocommerce_variable_add_to_cart('')
+#3 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#4 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#5 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/src/Blocks/BlockTypes/AddToCartForm.php(164): do_action('woocommerce_var...')
+#6 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/src/Blocks/BlockTypes/AbstractBlock.php(98): Automattic\WooCommerce\Blocks\BlockTypes\AddToCartForm->render(Array, '', Object(WP_Block))
+#7 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(537): Automattic\WooCommerce\Blocks\BlockTypes\AbstractBlock->render_callback(Array, '', Object(WP_Block))
+#8 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#9 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#10 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#11 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#12 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#13 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/blocks.php(2191): WP_Block->render()
+#14 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/blocks.php(2243): render_block(Array)
+#15 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/block-template.php(263): do_blocks('<!-- wp:templat...')
+#16 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/template-canvas.php(12): get_the_block_template_html()
+#17 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/template-loader.php(106): include('/Users/oliversc...')
+#18 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-blog-header.php(19): require_once('/Users/oliversc...')
+#19 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/index.php(17): require('/Users/oliversc...')
+#20 {main}
+  thrown in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/woocommerce/single-product/add-to-cart/variable.php on line 87
+[10-Apr-2025 13:23:02 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "soil_add_product_tab" not found or invalid function name in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-hook.php:324
+Stack trace:
+#0 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#1 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/woocommerce/single-product/tabs/tabs.php(29): apply_filters('woocommerce_pro...', Array)
+#2 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/includes/wc-core-functions.php(346): include('/Users/oliversc...')
+#3 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1780): wc_get_template('single-product/...')
+#4 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/src/Blocks/BlockTypes/ProductDetails.php(103): woocommerce_output_product_data_tabs()
+#5 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/src/Blocks/BlockTypes/ProductDetails.php(62): Automattic\WooCommerce\Blocks\BlockTypes\ProductDetails->render_tabs()
+#6 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/woocommerce/src/Blocks/BlockTypes/AbstractBlock.php(98): Automattic\WooCommerce\Blocks\BlockTypes\ProductDetails->render(Array, '', Object(WP_Block))
+#7 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(537): Automattic\WooCommerce\Blocks\BlockTypes\AbstractBlock->render_callback(Array, '', Object(WP_Block))
+#8 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#9 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#10 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-block.php(517): WP_Block->render()
+#11 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/blocks.php(2191): WP_Block->render()
+#12 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/blocks.php(2243): render_block(Array)
+#13 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/block-template.php(263): do_blocks('<!-- wp:templat...')
+#14 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/template-canvas.php(12): get_the_block_template_html()
+#15 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/template-loader.php(106): include('/Users/oliversc...')
+#16 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-blog-header.php(19): require_once('/Users/oliversc...')
+#17 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/index.php(17): require('/Users/oliversc...')
+#18 {main}
+  thrown in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-hook.php on line 324
+[10-Apr-2025 13:24:28 UTC] PHP Fatal error:  Cannot redeclare soil_add_product_tab() (previously declared in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/functions.php:46) in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/functions.php on line 57
+[10-Apr-2025 13:24:28 UTC] PHP Fatal error:  Cannot redeclare soil_add_product_tab() (previously declared in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/functions.php:46) in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/functions.php on line 57
+[10-Apr-2025 13:24:55 UTC] PHP Fatal error:  Cannot redeclare soil_add_product_tab() (previously declared in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/functions.php:46) in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/functions.php on line 57
+[10-Apr-2025 13:24:55 UTC] PHP Fatal error:  Cannot redeclare soil_add_product_tab() (previously declared in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/functions.php:46) in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/functions.php on line 57
+[10-Apr-2025 13:25:11 UTC] PHP Fatal error:  Cannot redeclare soil_add_product_tab() (previously declared in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/functions.php:46) in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/functions.php on line 57
+[10-Apr-2025 13:25:11 UTC] PHP Warning:  Trying to access array offset on value of type bool in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-recovery-mode-email-service.php on line 367
+[10-Apr-2025 13:25:11 UTC] PHP Warning:  Trying to access array offset on value of type bool in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-recovery-mode-email-service.php on line 368
+[10-Apr-2025 13:25:11 UTC] PHP Warning:  Trying to access array offset on value of type null in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/post-smtp/Postman/Postman-Mail/PostmanTransportRegistry.php on line 107
+[10-Apr-2025 13:25:11 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getFromEmailAddress() on null in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/post-smtp/Postman/PostmanWpMail.php:166
+Stack trace:
+#0 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/post-smtp/Postman/PostmanWpMail.php(149): PostmanWpMail->createNewMessage()
+#1 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/post-smtp/Postman/PostmanWpMail.php(50): PostmanWpMail->processWpMailCall('tech@bluebee.co...', '[Monxton Nurser...', 'Hii!\n\nWordPress...', '', Array)
+#2 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/post-smtp/Postman/PostmanWpMailBinder.php(149): PostmanWpMail->send('tech@bluebee.co...', '[Monxton Nurser...', 'Hii!\n\nWordPress...', '', '')
+#3 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-recovery-mode-email-service.php(225): wp_mail('tech@bluebee.co...', '[Monxton Nurser...', 'Hii!\n\nWordPress...', '', '')
+#4 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-recovery-mode-email-service.php(62): WP_Recovery_Mode_Email_Service->send_recovery_mode_email(86400, Array, Array)
+#5 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-recovery-mode.php(185): WP_Recovery_Mode_Email_Service->maybe_send_recovery_mode_email(86400, Array, Array)
+#6 /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-includes/class-wp-fatal-error-handler.php(55): WP_Recovery_Mode->handle_error(Array)
+#7 [internal function]: WP_Fatal_Error_Handler->handle()
+#8 {main}
+  thrown in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/post-smtp/Postman/PostmanWpMail.php on line 166

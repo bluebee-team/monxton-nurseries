@@ -15,12 +15,6 @@
     }
 }
 
-
-.wp-site-blocks {
-
-}
-
-
 footer.wp-block-template-part{
     margin: 0;
 }
@@ -159,15 +153,18 @@ iframe:not(.edit-site-visual-editor__editor-canvas){
     margin-top:var(--wp--preset--spacing--small-primary);
 }
 
+/* Breadcrumbs */
 .gspb-breadcrumbs {
-    position: absolute;
     top:var(--wp--preset--spacing--medium-primary);
     left:0;
     text-transform: uppercase;
     font-size:14px;
     font-weight:bold;
+    position: absolute;
 }
-
+.block-editor-iframe__body .gspb-breadcrumbs {
+    display:block;
+}
 .gspb-breadcrumbs a:first-of-type {
     font-size:0;
 }
@@ -177,11 +174,31 @@ iframe:not(.edit-site-visual-editor__editor-canvas){
     height:22px;
     content:url("../images/house.svg");
 }
-
 .wp-block-cover .gspb-breadcrumbs {
     top:var(--wp--preset--spacing--medium-primary);
     left:var(--wp--preset--spacing--medium-primary);
 }
+/* Breadcrumbs on white */
+.isolated-breadcrumbs {
+    top:var(--wp--preset--spacing--medium-primary);
+    left:0;
+    text-transform: uppercase;
+    font-size:14px;
+    gap:5px!important;
+}
+.isolated-breadcrumbs a:first-of-type {
+    font-size:0;
+}
+.isolated-breadcrumbs a:first-of-type::before {
+    display:block;
+    width:22px;
+    height:22px;
+    content:url("../images/house-blue.svg");
+}
+.isolated-breadcrumbs .wp-block-post-title {
+    font-weight:600;
+}
+
 
 /* Leaf graphic */
 .leaf-bg {
@@ -231,3 +248,166 @@ iframe:not(.edit-site-visual-editor__editor-canvas){
     }
 }
 
+/* Product page */
+.single_variation_wrap, .wp-block-woocommerce-add-to-cart-form {
+    display:flex;
+    justify-content: space-between;
+    gap:var(--wp--preset--spacing--small-primary);
+    width:100%;
+    .woocommerce-variation {
+        display:flex;
+        justify-content: flex-start;
+        gap:var(--wp--preset--spacing--small-primary);
+        margin-bottom:0!important;
+    }
+    .woocommerce-variation-description {
+        display:none;
+    }
+}
+.woocommerce-variation-price, .woocommerce-variation-availability, .price-wrapper {
+    background-color:var(--wp--preset--color--light-grey);
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    font-weight:600;
+    padding:var(--wp--preset--spacing--tiny-primary) var(--wp--preset--spacing--small-tertiary);
+    border-radius:20px;
+    p, span {
+        margin:0;
+    }
+}
+.stock:not(.woocommerce-variation-availability>.stock) {
+    background-color:var(--wp--preset--color--light-grey);
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    font-weight:600;
+    padding:var(--wp--preset--spacing--tiny-primary) var(--wp--preset--spacing--small-tertiary);
+    border-radius:20px;
+    p, span {
+        margin:0;
+    }
+}
+.woocommerce .product .stock, .woocommerce .product .sku-wrapper {
+    font-size:initial;
+    margin:0!important;
+}
+
+.wp-block-woocommerce-add-to-cart-form .variations_button>:not(.quantity),.wp-block-woocommerce-add-to-cart-form form.cart>:not(.quantity) {
+    grid-column: 1/4;
+}
+
+.wp-block-woocommerce-add-to-cart-form {
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    gap:var(--wp--preset--spacing--small-primary);
+    p, span {
+        margin:0;
+    }
+    .sku-wrapper {
+        justify-self: flex-end;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+.wp-block-woocommerce-add-to-cart-form, .single_variation_wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap:10px;
+        .woocommerce-variation {
+            flex-direction: column;
+            align-items: flex-start;
+            gap:10px;
+            form {
+                display:none;
+            }
+        }
+    }
+}
+
+
+.woocommerce div.product form.cart, .woocommerce div.product p.stock {
+    margin-bottom:0;
+}
+
+.woocommerce div.product form.cart .variations select {
+    border:0;
+    color:var(--wp--preset--color--primary);
+    background-color:var(--wp--preset--color--light-grey);
+    padding:var(--wp--preset--spacing--tiny-primary) var(--wp--preset--spacing--medium-primary) var(--wp--preset--spacing--tiny-primary) var(--wp--preset--spacing--small-tertiary);
+    border-radius:20px;
+}
+
+.woocommerce .sku-wrapper {
+    align-self:flex-start;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    padding:var(--wp--preset--spacing--tiny-primary) 0;
+    p {
+        margin:0;
+    }
+}
+
+.woocommerce div.product form.variations_form {
+    margin-bottom: 0;
+    width:100%;
+}
+
+@media only screen and (max-width: 1000px) {
+.woocommerce .variations {
+    th, td {
+        display:block;
+        padding-bottom:0!important;
+    }
+}
+}
+
+/* Tabs */
+.woocommerce-tabs {
+    .wc-tabs {
+        li {
+            opacity:1!important;
+            border:unset!important;
+            a {
+                font-weight:400!important;
+                background-color:var(--wp--preset--color--light-grey);
+                color:var(--wp--preset--color--primary);
+                border-top-left-radius: var(--wp--preset--spacing--small-tertiary)!important;
+                border-top-right-radius: var(--wp--preset--spacing--small-tertiary)!important;
+                padding-inline:var(--wp--preset--spacing--medium-primary)!important;
+                &:hover {
+                    background-color:var(--wp--preset--color--secondary)!important;
+                }
+            }    
+        }
+        li.active {       
+            a {
+                color:var(--wp--preset--color--white)!important;
+                background-color:var(--wp--preset--color--primary)!important;
+                border-top-left-radius: var(--wp--preset--spacing--small-tertiary)!important;
+                border-top-right-radius: var(--wp--preset--spacing--small-tertiary)!important;
+            }
+        }
+        @media only screen and (max-width: 770px) {
+            li, li.active {
+                margin-bottom:var(--wp--preset--spacing--small-primary)!important;
+                a {
+                    border-radius:var(--wp--preset--spacing--small-tertiary)!important;
+                }
+            }
+        }
+    }
+    .entry-content {
+        margin-top:var(--wp--preset--spacing--small-tertiary)!important;
+    }
+    h2 {
+        font-size:22px;
+        margin:var(--wp--preset--spacing--small-tertiary) 0!important;
+    }
+    .wp-block-heading, p, ul {
+        margin-bottom:var(--wp--preset--spacing--small-tertiary)!important;
+        max-width:80ch;
+    }
+}

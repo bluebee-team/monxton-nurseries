@@ -4,7 +4,7 @@
         transition-property: background-color, border-color, color;
         transition-duration: 0.25s;
         transition-timing-function: ease-in-out;
-
+        border-radius: 100px;
         &::after{
             background-image: url("../../../images/arrow-yellow.svg");
             background-size: contain;
@@ -103,6 +103,33 @@
                     background-image: url("../../../images/arrow-yellow.svg");
                 }
             }
+        }
+    }
+}
+
+.wp-block-read-more {
+    white-space: nowrap;
+    transition-property: background-color, border-color, color;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+    border-radius: 100px!important;
+    &::after{
+        background-image: url("../../../images/arrow-yellow.svg");
+        background-size: contain;
+        content: '';
+        display: inline-block;
+        height: 11px;
+        margin-left: 8px;
+        width: 18px;
+    }
+
+    &:is(.gspbgrid_item_link:hover ~ * .wp-block-button__link),
+    &:hover{
+        background-color: var(--wp--preset--color--secondary);
+        border-color: var(--wp--preset--color--secondary);
+        color: var(--wp--preset--color--white);
+        &::after{
+            background-image: url("../../../images/arrow-white.svg");
         }
     }
 }
