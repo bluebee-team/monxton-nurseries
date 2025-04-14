@@ -10,7 +10,7 @@ function updatePadding() {
         const headerHeight = header.offsetHeight; // Add 60px to the header height
 
         // Get all elements with the class .is-style-avoid-header
-        const elements = document.querySelectorAll('main, header.wp-block-template-part + .wp-block-cover, .entry-content:not(.inner-content) > .wp-block-group:first-child, .entry-content:not(.inner-content) > .wp-block-cover:first-child:not(:has(> .wp-block-cover__inner-container > .wp-block-cover:first-child)), .entry-content:not(.inner-content) > .wp-block-cover:first-child > .wp-block-cover__inner-container > .wp-block-cover:first-child, .is-style-sticky');
+        const elements = document.querySelectorAll('header.wp-block-template-part + .wp-block-group, header.wp-block-template-part + .wp-block-cover, .entry-content:not(.inner-content) > .wp-block-group:first-child, .entry-content:not(.inner-content) > .wp-block-cover:first-child:not(:has(> .wp-block-cover__inner-container > .wp-block-cover:first-child)), .entry-content:not(.inner-content) > .wp-block-cover:first-child > .wp-block-cover__inner-container > .wp-block-cover:first-child, .is-style-sticky');
 
         // Add padding to the top of each element equal to the header height
         elements.forEach(function(element) {

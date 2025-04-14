@@ -1,4 +1,9 @@
 /* Header */
+:where(.wp-site-blocks) > * {
+    margin-top:0!important;
+}
+
+
 header.wp-block-template-part {
     top: 0;
     transition-property: top;
@@ -8,7 +13,7 @@ header.wp-block-template-part {
     z-index: 99;
     background-color:var(--wp--preset--color--white);
     padding-top:var(--wp--preset--spacing--small-quaternary);
-
+    padding-bottom:var(--wp--preset--spacing--small-quaternary);
     &:not(.block-editor-iframe__body header.wp-block-template-part){
         position: fixed !important;
 
