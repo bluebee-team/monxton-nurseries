@@ -98,7 +98,7 @@ header.wp-block-template-part.scrolling {
     padding-top:var(--wp--preset--spacing--small-tertiary);
 }
 
-header + * {
+/* header + * {
     margin-top:200px;
-}
+} */
 

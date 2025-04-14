@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
 
 global $product; ?>
 <div class="woocommerce-variation">
-<p class="price-wrapper"><?php echo $product->get_price(); ?></p>
+<p class="price-wrapper">&pound;<?php echo $product->get_price(); ?></p>
 
 <?php if ( ! $product->is_purchasable() ) {
 	return;
@@ -54,7 +54,9 @@ if ( $product->is_in_stock() ) : ?>
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 	</form>
 	</div>
+	<?php if($product->get_sku() != '') { ?>
 	<p class="sku-wrapper">SKU: <?php echo $product->get_sku(); ?></p>
+	<?php } ?>
 	
 	<?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
 

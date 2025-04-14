@@ -83,12 +83,13 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 				 */
 				do_action( 'woocommerce_after_single_variation' );
 			?>
+			<?php if($product->get_sku() != '') { ?>
 			<div data-block-name="woocommerce/product-sku" data-is-descendent-of-single-product-template="true" class="wc-block-components-product-sku wc-block-grid__product-sku wp-block-woocommerce-product-sku product_meta wp-block-post-terms sku-wrapper" style="">
 	<p>
 	<span class="wp-block-post-terms__prefix">SKU: </span>
 	<span class="sku"><?php echo $product->get_sku(); ?></span>
 	</p>
-</div>
+</div><?php } ?>
 		</div>
 	<?php endif; ?>
 

@@ -153,3 +153,8 @@ Stack trace:
 #7 [internal function]: WP_Fatal_Error_Handler->handle()
 #8 {main}
   thrown in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/plugins/post-smtp/Postman/PostmanWpMail.php on line 166
+[11-Apr-2025 09:56:16 UTC] PHP Parse error:  syntax error, unexpected token ">>" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/woocommerce/single-product/add-to-cart/simple.php on line 57
+[11-Apr-2025 09:56:40 UTC] PHP Parse error:  syntax error, unexpected token "endif" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/woocommerce/single-product/add-to-cart/simple.php on line 59
+[11-Apr-2025 09:56:41 UTC] PHP Parse error:  syntax error, unexpected token "endif" in /Users/oliverscott-ison/Local Sites/monxton-nurseries/app/public/wp-content/themes/monxton/woocommerce/single-product/add-to-cart/simple.php on line 59
+[11-Apr-2025 11:53:08 UTC] Cron reschedule event error for hook: action_scheduler_run_queue, Error code: could_not_set, Error message: The cron event list could not be saved., Data: {"schedule":"every_minute","args":["WP Cron"],"interval":60}
+[11-Apr-2025 12:05:11 UTC] Cron reschedule event error for hook: action_scheduler_run_queue, Error code: could_not_set, Error message: The cron event list could not be saved., Data: {"schedule":"every_minute","args":["WP Cron"],"interval":60}
