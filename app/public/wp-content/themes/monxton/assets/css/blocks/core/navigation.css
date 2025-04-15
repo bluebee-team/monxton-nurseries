@@ -42,12 +42,14 @@
 }
 
 header.wp-block-template-part.scrolling {
-    .wp-block-navigation-item__content{
-		.wp-block-navigation-item__label{
-            color:var(--wp--preset--color--white);
-		}
-		
-	}
+    @media only screen and (min-width: 992px) {
+        .wp-block-navigation-item__content{
+            .wp-block-navigation-item__label{
+                color:var(--wp--preset--color--white);
+            }
+            
+        }
+    }
     .wp-block-button {
         .wp-block-button__link {
             background-color: var(--wp--preset--color--secondary);

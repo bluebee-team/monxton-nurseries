@@ -57,9 +57,13 @@ endif;
 function soil_add_product_tab_content() {
    global $product;
    if( get_field('soil_preferences')):
-   echo '<h2>Soil Preferences</h2>';
+//    echo '<h2>Soil Preferences</h2>';
     echo the_field('soil_preferences');
 endif;
 }
-
+/**
+ * Remove "Description" Heading Title @ WooCommerce Single Product Tabs
+ */
+add_filter( 'woocommerce_product_description_heading', '__return_null' );
+add_filter( 'woocommerce_product_additional_information_heading', '__return_null' );
 

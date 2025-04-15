@@ -169,9 +169,18 @@ header .wp-block-search:not(.gspb_slidingPanel-wrap .wp-block-search) {
         }
     }
 }
-/* Search in mobile nav */
+/*  Search field */
 .gspb_slidingPanel-wrap .wp-block-search {
-    border:1px solid  var(--wp--preset--color--primary)
+    border:1px solid  var(--wp--preset--color--primary);
+    border-radius:var(--wp--preset--spacing--small-tertiary);
+}
+.search .wp-block-columns .wp-block-search__button {
+    padding:6px 22px!important;
+}
+.search .wp-block-columns .wp-block-search__input {
+    border:1px solid  var(--wp--preset--color--primary);
+    border-radius:var(--wp--preset--spacing--small-tertiary);
+    padding:6px 22px;
 }
 
 header .white-logo {

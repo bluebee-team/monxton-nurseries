@@ -1,4 +1,8 @@
 /* Global styles */
+:root {
+    --breadcrumb-letter-spacing:2px;
+}
+
 .entry-content {
     > div {
         isolation: isolate;
@@ -32,6 +36,7 @@ iframe:not(.edit-site-visual-editor__editor-canvas){
         border-radius: 40px;
         padding:0 30px;
         font-weight:unset;
+        white-space: nowrap;
         word-break: keep-all;
     }
     &.highlight-bold strong {
@@ -59,6 +64,25 @@ iframe:not(.edit-site-visual-editor__editor-canvas){
 .wp-block-heading.has-p-font-size + .has-custom-1-font-size {
     margin-top:var(--wp--preset--spacing--small-primary);
 }
+.increased-ls {
+    letter-spacing: var(--breadcrumb-letter-spacing);
+}
+/* Can't add border radius inside media and text block */
+.wp-block-columns {
+    gap:var(--wp--preset--spacing--medium-tertiary)!important;
+}
+.wp-block-media-text__media img, .wp-block-columns img {
+    outline:2px solid blue;
+    border-radius: 16px;
+    width:100%;
+    height:auto;
+}
+
+.wp-container-core-group-is-layout-10 > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+    max-width: 1100px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
 
 /* Breadcrumbs */
 .gspb-breadcrumbs {
@@ -68,6 +92,7 @@ iframe:not(.edit-site-visual-editor__editor-canvas){
     font-size:14px;
     font-weight:bold;
     position: absolute;
+    letter-spacing: var(--breadcrumb-letter-spacing);
 }
 .block-editor-iframe__body .gspb-breadcrumbs {
     display:block;
@@ -92,6 +117,7 @@ iframe:not(.edit-site-visual-editor__editor-canvas){
     text-transform: uppercase;
     font-size:14px;
     gap:5px!important;
+    letter-spacing: var(--breadcrumb-letter-spacing);
 }
 .isolated-breadcrumbs p:first-of-type a {
     display:block;
@@ -114,19 +140,28 @@ iframe:not(.edit-site-visual-editor__editor-canvas){
         background-size:20vh
     }
 }
-.leaf-bg-video::after {
-    content: url("");
-    background-image: url("../images/leaf-graphic.webp");
-    background-repeat:no-repeat;
-    background-size:100%;
-    background-position:bottom right;
-    height: 50vh;
-    width: 20vw;
-    display: block;
-    position: absolute;
-    right: 0;
-    bottom: 0;
+.leaf-bg-video {
+    &::after {
+        content: url("");
+        background-image: url("../images/leaf-graphic-solid.webp");
+        background-repeat:no-repeat;
+        background-size:100%;
+        background-position:bottom right;
+        height: 50vh;
+        width: 26vw;
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        opacity:0.3;
+        
+    }
+    &.smaller-leaf::after {
+        height:40vh;
+        width:20vw;
+    }
 }
+    
 
 /* Explore link */
 .explore-arrow {
@@ -153,6 +188,15 @@ iframe:not(.edit-site-visual-editor__editor-canvas){
 }
 .max-char-26 {
     max-width:26ch!important;
+}
+.max-char-36 {
+    max-width:36ch!important;
+}
+.max-char-46 {
+    max-width:46ch!important;
+}
+.max-char-56 {
+    max-width:56ch!important;
 }
 
 /* Testimonials */
@@ -190,7 +234,7 @@ iframe:not(.edit-site-visual-editor__editor-canvas){
     justify-content: center;
     align-items:center;
     font-weight:600;
-    padding:var(--wp--preset--spacing--tiny-primary) var(--wp--preset--spacing--small-tertiary);
+    padding:6px 22px;
     border-radius:20px;
     p, span {
         margin:0;
@@ -202,7 +246,7 @@ iframe:not(.edit-site-visual-editor__editor-canvas){
     justify-content: center;
     align-items:center;
     font-weight:600;
-    padding:var(--wp--preset--spacing--tiny-primary) var(--wp--preset--spacing--small-tertiary);
+    padding:6px 22px;
     border-radius:20px;
     p, span {
         margin:0;
@@ -371,4 +415,84 @@ iframe:not(.edit-site-visual-editor__editor-canvas){
         margin-bottom:var(--wp--preset--spacing--small-tertiary)!important;
         max-width:80ch;
     }
+}
+
+/* Product image */
+.size-woocommerce_thumbnail {
+    aspect-ratio: 1/1;
+}
+
+/* Social icons */
+.wp-block-social-links {
+    .wp-block-social-link-anchor svg {
+        width:30px;
+        height:30px;
+    }
+}
+
+/* Product listings */
+.wc-block-product-template__responsive, .wp-container-core-post-template-is-layout-1 {
+    grid-template-columns: repeat(3, 1fr)!important;
+    grid-column-gap: 50px!important;
+    grid-row-gap: 60px!important;
+    @media only screen and (max-width: 1000px) {
+        grid-template-columns: repeat(2, 1fr)!important;
+        grid-column-gap: 30px!important;
+        grid-row-gap: 40px!important;
+        .is-layout-flex {
+            flex-direction: column;
+            /* gap:var(--wp--preset--spacing--small-tertiary); */
+            align-items: flex-start;
+        }
+    
+    }
+    @media only screen and (max-width: 600px) {
+        grid-template-columns: repeat(1, 1fr)!important;
+    }
+}
+
+.wc-block-product, .wp-block-post {
+    .wc-block-components-product-image {
+        display:block;
+    }
+    /* .wp-block-group {
+
+    } */
+    .wp-block-woocommerce-product-summary {
+        margin-top:0;
+    }
+    p {
+        margin:var(--wp--preset--spacing--small-primary) 0 var(--wp--preset--spacing--small-primary) 0;
+        
+    }
+    :where(.is-layout-flex) {
+        gap:var(--wp--preset--spacing--small-tertiary)!important;
+    }
+}
+
+.archive .wc-block-product-template__responsive {
+    margin-bottom:var(--wp--preset--spacing--medium-tertiary)!important;
+}
+
+/* Post page */
+.single-post .wp-block-post-featured-image {
+    max-width:40vw;
+    @media only screen and (max-width: 782px) {
+        max-width:unset;
+    }
+}
+
+/* Insights panel for mobile */
+@media only screen and (max-width: 784px) {
+.insights-panel {
+    .gspbgrid_item {
+        .wp-block-columns {
+            gap:var(--wp--preset--spacing--small-primary)!important;
+            .wp-block-column {
+                width:unset!important;
+                flex-basis:0!important;
+            }
+        }
+    }
+}
 }

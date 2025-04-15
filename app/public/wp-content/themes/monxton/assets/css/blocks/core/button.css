@@ -4,7 +4,7 @@
         transition-property: background-color, border-color, color;
         transition-duration: 0.25s;
         transition-timing-function: ease-in-out;
-        border-radius: 100px;
+        border-radius: var(--wp--preset--spacing--small-tertiary);
         &::after{
             background-image: url("../../../images/arrow-yellow.svg");
             background-size: contain;
@@ -82,8 +82,7 @@
                 border-color: var(--wp--preset--color--white);
                 color: var(--wp--preset--color--primary);
                 &::after{
-                    background-image: url("../../../images/arrow-blue.svg");
-                    outline:2px solid red;
+                    background-image: url("../../../images/arrow-blue.svg")!important;
                 }
             }
         }
@@ -132,4 +131,8 @@
             background-image: url("../../../images/arrow-white.svg");
         }
     }
+}
+
+.reviews-button {
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.55);
 }

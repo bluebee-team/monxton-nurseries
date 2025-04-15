@@ -36,6 +36,11 @@
 					"slug": "light-grey"
 				},
 				{
+					"color": "#F7F7F7",
+					"name": "Light Grey 2",
+					"slug": "light-grey-two"
+				},
+				{
 					"color": "#ffffff",
 					"name": "White",
 					"slug": "white"
@@ -134,7 +139,10 @@
 					"slug": "large-secondary"
 				}
 			]
-		}
+		},
+		"border": {
+				"customRadius": true
+			}
 	},
 	"styles": {
 		"blocks": {
@@ -169,8 +177,11 @@
 						"left": "var(--wp--preset--spacing--small-primary)",
 						"top": "var(--wp--preset--spacing--small-primary)"
 					}
-				}
+				},
+			"border": {
+				"radius": 20
 			}
+		}
 		}
 	},
 	"version": 3,
