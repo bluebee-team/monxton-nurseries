@@ -17,7 +17,6 @@ function updatePadding() {
             element.style.paddingTop = headerHeight + 'px';
         });
 
-        console.log(header.offsetHeight);
     }
 }
 
